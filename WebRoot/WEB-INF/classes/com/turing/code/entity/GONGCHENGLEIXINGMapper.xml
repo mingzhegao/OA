@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.turing.code.mapper.GONGCHENGLEIXINGMapper" >
+  <resultMap id="BaseResultMap" type="com.turing.code.entity.GONGCHENGLEIXING" >
+    <id column="CGL_ID" property="cglId" jdbcType="VARCHAR" />
+    <result column="CGL_NAME" property="cglName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CGL_ID, CGL_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CODE_GONGCHENGLEIXING
+    where CGL_ID = #{cglId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CODE_GONGCHENGLEIXING
+    where CGL_ID = #{cglId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.turing.code.entity.GONGCHENGLEIXING" >
+    insert into CODE_GONGCHENGLEIXING (CGL_ID, CGL_NAME)
+    values (#{cglId,jdbcType=VARCHAR}, #{cglName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.code.entity.GONGCHENGLEIXING" >
+    insert into CODE_GONGCHENGLEIXING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cglId != null" >
+        CGL_ID,
+      </if>
+      <if test="cglName != null" >
+        CGL_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cglId != null" >
+        #{cglId,jdbcType=VARCHAR},
+      </if>
+      <if test="cglName != null" >
+        #{cglName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.turing.code.entity.GONGCHENGLEIXING" >
+    update CODE_GONGCHENGLEIXING
+    <set >
+      <if test="cglName != null" >
+        CGL_NAME = #{cglName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CGL_ID = #{cglId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.turing.code.entity.GONGCHENGLEIXING" >
+    update CODE_GONGCHENGLEIXING
+    set CGL_NAME = #{cglName,jdbcType=VARCHAR}
+    where CGL_ID = #{cglId,jdbcType=VARCHAR}
+  </update>
+</mapper>

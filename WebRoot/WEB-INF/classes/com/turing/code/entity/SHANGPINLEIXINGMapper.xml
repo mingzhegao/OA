@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.turing.code.mapper.SHANGPINLEIXINGMapper" >
+  <resultMap id="BaseResultMap" type="com.turing.code.entity.SHANGPINLEIXING" >
+    <id column="CSL_ID" property="cslId" jdbcType="VARCHAR" />
+    <result column="CSL_NAME" property="cslName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CSL_ID, CSL_NAME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from CODE_SHANGPINLEIXING
+    where CSL_ID = #{cslId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from CODE_SHANGPINLEIXING
+    where CSL_ID = #{cslId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.turing.code.entity.SHANGPINLEIXING" >
+    insert into CODE_SHANGPINLEIXING (CSL_ID, CSL_NAME)
+    values (#{cslId,jdbcType=VARCHAR}, #{cslName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.code.entity.SHANGPINLEIXING" >
+    insert into CODE_SHANGPINLEIXING
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cslId != null" >
+        CSL_ID,
+      </if>
+      <if test="cslName != null" >
+        CSL_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cslId != null" >
+        #{cslId,jdbcType=VARCHAR},
+      </if>
+      <if test="cslName != null" >
+        #{cslName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.turing.code.entity.SHANGPINLEIXING" >
+    update CODE_SHANGPINLEIXING
+    <set >
+      <if test="cslName != null" >
+        CSL_NAME = #{cslName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CSL_ID = #{cslId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.turing.code.entity.SHANGPINLEIXING" >
+    update CODE_SHANGPINLEIXING
+    set CSL_NAME = #{cslName,jdbcType=VARCHAR}
+    where CSL_ID = #{cslId,jdbcType=VARCHAR}
+  </update>
+</mapper>

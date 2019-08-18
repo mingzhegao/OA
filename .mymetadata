@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Turing_ssm3"
+  id="myeclipse.1476797849250"
+  context-root="/Turing_ssm3"
+  j2ee-spec="6.0"
+  archive="Turing_ssm3.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

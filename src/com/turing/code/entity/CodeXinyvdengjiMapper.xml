@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.turing.code.mapper.CodeXinyvdengjiMapper">
+  <resultMap id="BaseResultMap" type="com.turing.code.entity.CodeXinyvdengji">
+    <id column="CXY_ID" jdbcType="VARCHAR" property="cxyId" />
+    <result column="CXY_NAME" jdbcType="VARCHAR" property="cxyName" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    CXY_ID, CXY_NAME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from CODE_XINYVDENGJI
+    where CXY_ID = #{cxyId,jdbcType=VARCHAR}
+  </select>
+  <select id="queryAll" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from CODE_XINYVDENGJI
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from CODE_XINYVDENGJI
+    where CXY_ID = #{cxyId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.turing.code.entity.CodeXinyvdengji">
+    insert into CODE_XINYVDENGJI (CXY_ID, CXY_NAME)
+    values (#{cxyId,jdbcType=VARCHAR}, #{cxyName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.turing.code.entity.CodeXinyvdengji">
+    insert into CODE_XINYVDENGJI
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cxyId != null">
+        CXY_ID,
+      </if>
+      <if test="cxyName != null">
+        CXY_NAME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cxyId != null">
+        #{cxyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cxyName != null">
+        #{cxyName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.turing.code.entity.CodeXinyvdengji">
+    update CODE_XINYVDENGJI
+    <set>
+      <if test="cxyName != null">
+        CXY_NAME = #{cxyName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CXY_ID = #{cxyId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.turing.code.entity.CodeXinyvdengji">
+    update CODE_XINYVDENGJI
+    set CXY_NAME = #{cxyName,jdbcType=VARCHAR}
+    where CXY_ID = #{cxyId,jdbcType=VARCHAR}
+  </update>
+</mapper>

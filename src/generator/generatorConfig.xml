@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <classPathEntry    location="src/generator/classes12.jar"/>
+    <context id="Oracle"    targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!-- 数据库链接地址账号密码 -->
+        <jdbcConnection 
+        	driverClass="oracle.jdbc.driver.OracleDriver" 
+        	connectionURL="jdbc:oracle:thin:@localhost:1521:ORCL" 
+        	userId="mrmf"
+        	password="mrmf"
+        >
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成Model类存放位置 实体类 -->
+        <javaModelGenerator targetPackage="com.turing.code.entity" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件存放位置 -->
+        <sqlMapGenerator targetPackage="com.turing.code.entity" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成Dao类存放位置,mapper -->
+        <javaClientGenerator targetPackage="com.turing.code.mapper" type="XMLMAPPER" targetProject="src">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 生成对应表及类名 -->
+        <!-- 
+        <table tableName="author" domainObjectName="Author"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         -->
+        <!--  <table tableName="KCGL_PIAOJU" domainObjectName="KcglPiaoju"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+         <table tableName="KCGL_PJ_MINGXI" domainObjectName="KcglPjMingxi"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> -->
+         <table tableName="CODE_SHANGPINLEIXING" domainObjectName="SHANGPINLEIXING"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table> 
+    	
+    </context>
+</generatorConfiguration>
